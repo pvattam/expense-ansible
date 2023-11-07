@@ -1,0 +1,20 @@
+- name: Expense Mysql setup
+  hosts: all
+  tasks:
+    - name: Disable Mysql default version
+      ansible.builtin.shell: dnf module disable mysql -y   #dnf module is not available in ansible so using shell command
+    - name: Copy mysql repo file
+      ansible.builtin.copy:
+        src: mysql.repo
+        dest: /etc/yum.repos.d/mysql.repo
+    - name: Install mysql server
+      ansible.builtin.dng:
+        name: mysql-community-server
+        state: present
+    - name: Start mysql server
+      ansible.builtin.systemd:
+        name: mysqld
+        state: restarted
+        enabled: yes
+    - name: Set mysql password
+      ansible.builtin.shell: mysql_secure_installation --set-root-pass {{MYSQL_ROOT_PASSWORD}}
