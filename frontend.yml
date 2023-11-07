@@ -17,7 +17,7 @@
     - name: Create Nginx Directory
       ansible.builtin.file:
         path: /usr/share/nginx/html/
-        state: present
+        state: directory
     - name: Download and Extract the Frontend Content
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
