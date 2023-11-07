@@ -1,5 +1,6 @@
 - name: Expense Mysql setup
   hosts: all
+  become: yes
   tasks:
     - name: Disable Mysql default version
       ansible.builtin.shell: dnf module disable mysql -y   #dnf module is not available in ansible so using shell command
