@@ -1,0 +1,47 @@
+- name: Disable NodeJs default version
+  ansible.builtin.shell: dnf module disable nodejs -y
+
+- name: Enable NodeJs 18 version
+  ansible.builtin.shell: dnf module enable nodejs:18 -y
+
+- name: Installing NodeJs
+  ansible.builtin.dnf:
+    name: nodejs
+    state: present
+
+- name: Copy backend service file
+  ansible.builtin.template:
+    src: backend.service
+    dest: /etc/systemd/system/backend.service
+
+- name: Add application user
+  ansible.builtin.user:
+    name: expense
+
+- name: Import common role - App Pre-requisites
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-prereq
+  vars:
+    app_dir: /app
+    component: backend
+
+- name: Download NodeJs dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app        #It will go to /app directory and do npm install
+
+- name: Install Mysql client
+  ansible.builtin.dnf:
+    name: mysql
+    state: present
+
+- name: Load schema
+  ansible.builtin.shell: mysql -h mysql-{{env}}.devopspv24.online -uroot -p{{MYSQL_ROOT_PASSWORD}} < /app/schema/backend.sql
+
+- name: start backend service
+  ansible.builtin.systemd:
+    name: backend
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
