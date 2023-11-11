@@ -37,7 +37,7 @@
     state: present
 
 - name: Load schema
-  ansible.builtin.shell: {{ lookup('amazon.aws.aws_ssm', 'backend.{{env}}.DB_HOST', region='us-east-1' ) }} -u{{ lookup('amazon.aws.aws_ssm', 'backend.{{env}}.DB_USER', region='us-east-1' ) }} -p{{ lookup('amazon.aws.aws_ssm', 'backend.{{env}}.DB_PASS', region='us-east-1' ) }} < /app/schema/backend.sql
+  ansible.builtin.shell: "{{ lookup('amazon.aws.aws_ssm', 'backend.{{env}}.DB_HOST', region='us-east-1' ) }}" -u"{{ lookup('amazon.aws.aws_ssm', 'backend.{{env}}.DB_USER', region='us-east-1' ) }}" -p"{{ lookup('amazon.aws.aws_ssm', 'backend.{{env}}.DB_PASS', region='us-east-1' ) }}" < /app/schema/backend.sql
 
 - name: start backend service
   ansible.builtin.systemd:
