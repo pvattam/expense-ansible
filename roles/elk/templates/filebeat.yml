@@ -22,14 +22,14 @@ filebeat.inputs:
   - type: filestream
 
     # Unique ID among all inputs, an ID is required.
-    id: {{ component }}
+    id: frontend
 
     # Change to true to enable this input configuration.
     enabled: true
 
     # Paths that should be crawled and fetched. Glob based paths.
     paths:
-      - {{ log_file }}
+      - var.log/nginx/access.log
       #- c:\programdata\elasticsearch\logs\*
 
     # Exclude lines. A list of regular expressions to match. It drops the lines th                                                                                                             at are
@@ -107,38 +107,38 @@ setup.template.settings:
 # This requires a Kibana endpoint configuration.
 setup.kibana:
 
-# Kibana Host
-# Scheme and port can be left out and will be set to the default (http and 560                                                                                                             1)
-# In case you specify and additional path, the scheme is required: http://loca                                                                                                             lhost:5601/path
-# IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-#host: "localhost:5601"
+  # Kibana Host
+  # Scheme and port can be left out and will be set to the default (http and 560                                                                                                             1)
+  # In case you specify and additional path, the scheme is required: http://loca                                                                                                             lhost:5601/path
+  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
+  #host: "localhost:5601"
 
-# Kibana Space ID
-# ID of the Kibana Space into which the dashboards should be loaded. By defaul                                                                                                             t,
-# the Default Space will be used.
-#space.id:
+  # Kibana Space ID
+  # ID of the Kibana Space into which the dashboards should be loaded. By defaul                                                                                                             t,
+  # the Default Space will be used.
+  #space.id:
 
-# =============================== Elastic Cloud ================================
+  # =============================== Elastic Cloud ================================
 
-# These settings simplify using Filebeat with the Elastic Cloud (https://cloud.e                                                                                                             lastic.co/).
+  # These settings simplify using Filebeat with the Elastic Cloud (https://cloud.e                                                                                                             lastic.co/).
 
-# The cloud.id setting overwrites the `output.elasticsearch.hosts` and
-# `setup.kibana.host` options.
-# You can find the `cloud.id` in the Elastic Cloud web UI.
-#cloud.id:
+  # The cloud.id setting overwrites the `output.elasticsearch.hosts` and
+  # `setup.kibana.host` options.
+  # You can find the `cloud.id` in the Elastic Cloud web UI.
+  #cloud.id:
 
-# The cloud.auth setting overwrites the `output.elasticsearch.username` and
-# `output.elasticsearch.password` settings. The format is `<user>:<pass>`.
-#cloud.auth:
+  # The cloud.auth setting overwrites the `output.elasticsearch.username` and
+  # `output.elasticsearch.password` settings. The format is `<user>:<pass>`.
+  #cloud.auth:
 
-# ================================== Outputs ===================================
+  # ================================== Outputs ===================================
 
-# Configure what output to use when sending the data collected by the beat.
+  # Configure what output to use when sending the data collected by the beat.
 
-# ---------------------------- Elasticsearch Output ----------------------------
-#output.elasticsearch:
+  # ---------------------------- Elasticsearch Output ----------------------------
+  #output.elasticsearch:
   # Array of hosts to connect to.
- # hosts: ["localhost:9200"]
+  # hosts: ["localhost:9200"]
 
   # Protocol - either `http` (default) or `https`.
   #protocol: "https"
@@ -150,7 +150,7 @@ setup.kibana:
 
   # ------------------------------ Logstash Output -------------------------------
   output.logstash:
-  # The Logstash hosts
+    # The Logstash hosts
     hosts: ["172.31.95.170"]
 
   # Optional SSL. By default is off.
