@@ -1,3 +1,15 @@
+- name: Copy Rsyslog conf
+  ansible.builtin.template:
+    src: rsyslog.conf
+    dest: /etc/rsyslog.d/{{component}}.conf
+  when: is_rsyslog_needed
+
+- name: Restart rsyslog Service
+  ansible.builtin.systemd:
+    name: rsyslog
+    state: restarted
+  when: is_rsyslog_needed
+
 - name: Copy Elastic Yum Repo file
   ansible.builtin.template:
     src: elastic.repo
