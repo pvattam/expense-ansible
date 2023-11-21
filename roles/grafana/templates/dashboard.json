@@ -25,22 +25,22 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d5b266f3-45de-4d6c-8122-296c04060162"
+        "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
       },
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
               "options": {
-                "0": {
-                  "color": "red",
-                  "index": 1,
-                  "text": "DOWN"
-                },
                 "1": {
                   "color": "green",
                   "index": 0,
                   "text": "UP"
+                },
+                "2": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "DOWN"
                 }
               },
               "type": "value"
@@ -64,8 +64,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 3,
+        "h": 7,
+        "w": 6,
         "x": 0,
         "y": 0
       },
@@ -90,16 +90,16 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d5b266f3-45de-4d6c-8122-296c04060162"
+            "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
           },
           "editorMode": "code",
-          "expr": "up{name=\"{{component}}-{{env}}\"}",
+          "expr": "up{name=\"{{component}}{{env}}\"}",
           "instant": false,
         {% raw %}
-        "legendFormat": "{{instance}}",
+          "legendFormat": "{{instance}}",
         {% endraw %}
-        "range": true,
-        "refId": "A"
+          "range": true,
+          "refId": "A"
         }
       ],
       "title": "UP",
@@ -108,8 +108,9 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d5b266f3-45de-4d6c-8122-296c04060162"
+        "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
       },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -123,7 +124,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 15,
+            "fillOpacity": 12,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -165,9 +166,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 9,
-        "x": 3,
+        "h": 8,
+        "w": 12,
+        "x": 7,
         "y": 0
       },
       "id": 2,
@@ -187,16 +188,16 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d5b266f3-45de-4d6c-8122-296c04060162"
+            "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
           },
           "editorMode": "code",
-          "expr": "(node_memory_MemFree_bytes{name=\"{{component}}-{{env}}\"} + node_memory_Cached_bytes{name=\"{{component}}-{{env}}\"} + node_memory_Buffers_bytes{name=\"{{component}}-{{env}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}-{{env}}\"} * 100",
+          "expr": "(node_memory_MemFree_bytes{name=\"{{component}}{{env}}\"} + node_memory_Cached_bytes {name=\"{{component}}{{env}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}{{env}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}{{env}}\"} * 100",
           "instant": false,
-        {% raw %}
-        "legendFormat": "{{name}}",
-        {% endraw %}
-        "range": true,
-        "refId": "A"
+          {% raw %}
+          "legendFormat": "{{name}}",
+          {% endraw %}
+          "range": true,
+          "refId": "A"
         }
       ],
       "title": "Memory Used %",
@@ -207,16 +208,35 @@
   "schemaVersion": 38,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "c11322e4-b7da-422b-a1ef-b316837d23a8"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "{{component}}",
-  "uid": "ccf130f6-b74c-4164-b2e6-f519f0f6e035",
+  "uid": "fba6d3ee-9ade-4761-a004-348eddd2d266",
   "version": 4,
   "weekStart": ""
 }
