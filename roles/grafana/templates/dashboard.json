@@ -95,7 +95,9 @@
           "editorMode": "code",
           "expr": "up{name=\"frontend-dev\"}",
           "instant": false,
+        {% raw %}
           "legendFormat": "{{instance}}",
+        {% endraw %}
           "range": true,
           "refId": "A"
         }
