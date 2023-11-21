@@ -93,7 +93,7 @@
             "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
           },
           "editorMode": "code",
-          "expr": "up{name=\"frontend-dev\"}",
+          "expr": "up{name=\"{{component}}{{env}}\"}",
           "instant": false,
         {% raw %}
           "legendFormat": "{{instance}}",
@@ -191,7 +191,7 @@
             "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
           },
           "editorMode": "code",
-          "expr": "(node_memory_MemFree_bytes{name=\"frontend-dev\"} + node_memory_Cached_bytes {name=\"frontend-dev\"}+ node_memory_Buffers_bytes{name=\"frontend-dev\"}) / node_memory_MemTotal_bytes{name=\"frontend-dev\"} * 100",
+          "expr": "(node_memory_MemFree_bytes{name=\"{{component}}{{env}}\"} + node_memory_Cached_bytes {name=\"{{component}}{{env}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}{{env}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}{{env}}\"} * 100",
           "instant": false,
           {% raw %}
           "legendFormat": "{{name}}",
@@ -235,7 +235,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "frontend",
+  "title": "{{component}}",
   "uid": "fba6d3ee-9ade-4761-a004-348eddd2d266",
   "version": 4,
   "weekStart": ""
