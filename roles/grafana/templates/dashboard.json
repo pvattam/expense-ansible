@@ -193,7 +193,9 @@
           "editorMode": "code",
           "expr": "(node_memory_MemFree_bytes{name=\"frontend-dev\"} + node_memory_Cached_bytes {name=\"frontend-dev\"}+ node_memory_Buffers_bytes{name=\"frontend-dev\"}) / node_memory_MemTotal_bytes{name=\"frontend-dev\"} * 100",
           "instant": false,
+          {% raw %}
           "legendFormat": "{{name}}",
+          {% endraw %}
           "range": true,
           "refId": "A"
         }
@@ -233,7 +235,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "New dashboard",
+  "title": "frontend",
   "uid": "fba6d3ee-9ade-4761-a004-348eddd2d266",
   "version": 4,
   "weekStart": ""
