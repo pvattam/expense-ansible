@@ -190,7 +190,7 @@
             "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
           },
           "editorMode": "code",
-          "expr": "(node_memory_MemFree_bytes{name=\"{{component}}{{env}}\"} + node_memory_Cached_bytes {name=\"{{component}}{{env}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}{{env}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}{{env}}\"} * 100",
+          "expr": "(node_memory_MemFree_bytes{name=\"{{component}}-{{env}}\"} + node_memory_Cached_bytes {name=\"{{component}}-{{env}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}-{{env}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}-{{env}}\"} * 100",
           "instant": false,
           {% raw %}
           "legendFormat": "{{name}}",
