@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -32,15 +32,15 @@
           "mappings": [
             {
               "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "DOWN"
+                },
                 "1": {
                   "color": "green",
                   "index": 0,
                   "text": "UP"
-                },
-                "2": {
-                  "color": "red",
-                  "index": 1,
-                  "text": "DOWN"
                 }
               },
               "type": "value"
@@ -50,7 +50,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red"
+                "color": "red",
+                "value": null
               },
               {
                 "color": "green",
@@ -64,7 +65,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 5,
         "x": 0,
         "y": 0
       },
@@ -101,7 +102,7 @@
           "refId": "A"
         }
       ],
-      "title": "UP",
+      "title": "up",
       "type": "stat"
     },
     {
@@ -109,7 +110,6 @@
         "type": "prometheus",
         "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
       },
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -123,7 +123,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 12,
+            "fillOpacity": 18,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -152,7 +152,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -166,7 +167,7 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 7,
+        "x": 6,
         "y": 0
       },
       "id": 2,
@@ -198,7 +199,7 @@
           "refId": "A"
         }
       ],
-      "title": "Memory Used %",
+      "title": "Memory Usage %",
       "type": "timeseries"
     }
   ],
@@ -206,35 +207,16 @@
   "schemaVersion": 38,
   "tags": [],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "selected": false,
-          "text": "Prometheus",
-          "value": "c11322e4-b7da-422b-a1ef-b316837d23a8"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "datasource",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      }
-    ]
+    "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "{{component}}",
-  "uid": "fba6d3ee-9ade-4761-a004-348eddd2d266",
-  "version": 4,
+  "uid": "fdc7382d-a72a-4e24-a2a9-7806352fc92e",
+  "version": 5,
   "weekStart": ""
 }
