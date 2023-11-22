@@ -95,9 +95,9 @@
           "editorMode": "code",
           "expr": "up{name=\"{{component}}{{env}}\"}",
           "instant": false,
-        {% raw %}
+        {% raw %}  
           "legendFormat": "{{instance}}",
-        {% endraw %}
+        {% endraw %},
           "range": true,
           "refId": "A"
         }
@@ -237,6 +237,6 @@
   "timezone": "",
   "title": "{{component}}",
   "uid": "fba6d3ee-9ade-4761-a004-348eddd2d266",
-  "version": 4,
+  "version": 8,
   "weekStart": ""
 }
