@@ -93,7 +93,7 @@
             "uid": "c11322e4-b7da-422b-a1ef-b316837d23a8"
           },
           "editorMode": "code",
-          "expr": "up{name=\"{{component}}{{env}}\"}",
+          "expr": "up{name=\"{{component}}-{{env}}\"}",
           "instant": false,
         {% raw %}
           "legendFormat": "{{instance}}",
