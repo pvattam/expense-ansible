@@ -97,7 +97,7 @@
           "instant": false,
         {% raw %}  
           "legendFormat": "{{instance}}",
-        {% endraw %},
+        {% endraw %}
           "range": true,
           "refId": "A"
         }
