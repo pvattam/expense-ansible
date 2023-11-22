@@ -193,7 +193,7 @@
           "instant": false,
           {% raw %}
           "legendFormat": "{{name}}",
-          {% raw %}
+          {% endraw %}
           "range": true,
           "refId": "A"
         }
