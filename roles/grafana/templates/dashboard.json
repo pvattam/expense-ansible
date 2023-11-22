@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -50,8 +50,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "green",
@@ -95,7 +94,7 @@
           "editorMode": "code",
           "expr": "up{name=\"{{component}}{{env}}\"}",
           "instant": false,
-        {% raw %}  
+        {% raw %}
           "legendFormat": "{{instance}}",
         {% endraw %}
           "range": true,
@@ -153,8 +152,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -195,7 +193,7 @@
           "instant": false,
           {% raw %}
           "legendFormat": "{{name}}",
-          {% endraw %}
+          {% raw %}
           "range": true,
           "refId": "A"
         }
@@ -237,6 +235,6 @@
   "timezone": "",
   "title": "{{component}}",
   "uid": "fba6d3ee-9ade-4761-a004-348eddd2d266",
-  "version": 8,
+  "version": 4,
   "weekStart": ""
 }
