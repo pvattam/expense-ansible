@@ -3,11 +3,14 @@ route:
   group_wait: 30s
   group_interval: 5m
   repeat_interval: 1h
-  receiver: 'web.hook'
+  receiver: 'SNS'
 receivers:
-  - name: 'web.hook'
-    webhook_configs:
-      - url: 'http://127.0.0.1:5001/'
+  - name: SNS
+    sns_configs:
+      - sigv4:
+          region: us-east-1
+          topic_arn: arn:aws:sns:us-east-1:072976934238:email1
+          subject: somesubject
 inhibit_rules:
   - source_match:
       severity: 'critical'
