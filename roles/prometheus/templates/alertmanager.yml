@@ -10,7 +10,7 @@ receivers:
       - sigv4:
           region: us-east-1
           topic_arn: arn:aws:sns:us-east-1:072976934238:email1
-          subject: somesubject
+
 inhibit_rules:
   - source_match:
       severity: 'critical'
