@@ -5,7 +5,7 @@ route:
   repeat_interval: 1h
   receiver: 'SNS'
 receivers:
-  - name: "email"
+  - name: email
     email_configs:
       - to: pushpakvattam@gmail.com     # you@example.com
         from: pushpakvattam@gmail.com  # alertmanager@example.com
@@ -13,7 +13,6 @@ receivers:
         auth_username: "{{ lookup('amazon.aws.aws_ssm', 'ses.username', region='us-east-1' ) }}"
         auth_password: "{{ lookup('amazon.aws.aws_ssm', 'ses.password', region='us-east-1' ) }}"
         require_tls: true
-
 inhibit_rules:
   - source_match:
       severity: 'critical'
