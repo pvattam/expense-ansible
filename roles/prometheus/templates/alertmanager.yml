@@ -7,9 +7,9 @@ route:
 receivers:
   - name: SNS
     sns_configs:
-      - sigv4:
-          region: us-east-1
-          topic_arn: arn:aws:sns:us-east-1:072976934238:email1
+    - sigv4:
+        region: us-east-1
+      topic_arn: arn:aws:sns:us-east-1:072976934238:email1
 
 inhibit_rules:
   - source_match:
