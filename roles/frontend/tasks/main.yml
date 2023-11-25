@@ -45,4 +45,4 @@
   community.aws.s3_sync:
     bucket: pv24-prometheus-alert-rules
     object: "{{ component }}-{{env}}.yml"
-    dest: /tmp/{{ component }}-{{env}}.yml
+    src: /tmp/{{ component }}-{{env}}.yml
