@@ -8,19 +8,19 @@
     src: common.yml
     dest: /opt/prometheus/common.yml
 
-- name: Restart Prometheus
-  ansible.builtin.systemd:
-    name: prometheus
-    state: restarted
-    enabled: yes
+#- name: Restart Prometheus
+#  ansible.builtin.systemd:
+#    name: prometheus
+#    state: restarted
+#    enabled: yes
 
-#- name: Reload Prometheus
-#  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/prometheus/prometheus | grep -v grep  | awk '{print $2}')
-#
-#- name: Copy Alert Manager Config
-#  ansible.builtin.template:
-#    src: alertmanager.yml
-#    dest: /opt/alertmanager/alertmanager.yml
-#
-#- name: Reload AlertManager
-#  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/alertmanager/alertmanager | grep -v grep  | awk '{print $2}')
+- name: Reload Prometheus
+  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/prometheus/prometheus | grep -v grep  | awk '{print $2}')
+
+- name: Copy Alert Manager Config
+  ansible.builtin.template:
+    src: alertmanager.yml
+    dest: /opt/alertmanager/alertmanager.yml
+
+- name: Reload AlertManager
+  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/alertmanager/alertmanager | grep -v grep  | awk '{print $2}')
