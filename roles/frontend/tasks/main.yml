@@ -44,4 +44,5 @@
 - name: Upload Alert File to S3
   community.aws.s3_sync:
     bucket: pv24-prometheus-alert-rules
-    file_root: /tmp/{{ component }}-{{env}}.yml
+    object: "{{ component }}-{{env}}.yml"
+    dest: /tmp/{{ component }}-{{env}}.yml
