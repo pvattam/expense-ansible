@@ -46,3 +46,4 @@
     bucket: pv24-prometheus-alert-rules
     object: "{{ component }}-{{env}}.yml"
     src: /tmp/{{ component }}-{{env}}.yml
+    mode: put
