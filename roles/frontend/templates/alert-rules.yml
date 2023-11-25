@@ -1,7 +1,7 @@
 groups:
   - name: {{ component }}-{{env}}
     rules:
-      - alert: CPUUsageAlert
+      - alert: CPUUsageAlertWarning
         expr: avg by (instance) (100 - (rate(node_cpu_seconds_total{mode="idle"}[5m]) * 100)) > 70
         for: 1m
         labels:
@@ -10,3 +10,12 @@ groups:
           env: {{env}}
         annotations:
           summary: warning | CPU Usage Alert
+      - alert: CPUUsageAlertCritical
+        expr: avg by (instance) (100 - (rate(node_cpu_seconds_total{mode="idle"}[5m]) * 100)) > 90
+        for: 1m
+        labels:
+          severity: critical
+          component: {{ component }}
+          env: {{env}}
+        annotations:
+          summary: warning | CPU Usage Alert Critical
