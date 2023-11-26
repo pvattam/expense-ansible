@@ -1,0 +1,15 @@
+- name: Generate Alert YAML File
+  ansible.builtin.template:
+    src: alert-rules.yml
+    dest: /tmp/{{ component }}-{{env}}.yml
+
+- name: Upload Alert File to S3
+  ansible.builtin.shell: aws s3 cp /tmp/frontend-dev.yml s3://pv24-prometheus-alert-rules/frontend-dev.yml
+#  amazon.aws.s3_object:
+#    bucket: pv24-prometheus-alert-rules
+#    object: "{{ component }}-{{env}}.yml"
+#    src: /tmp/{{ component }}-{{env}}.yml
+#    mode: put
+
+- name: Trigger Prometheus Reload Job
+  ansible.builtin.shell: curl -u {{ lookup('amazon.aws.aws_ssm', 'jenkins.username', region='us-east-1' ) }}:{{ lookup('amazon.aws.aws_ssm', 'jenkins.password', region='us-east-1' ) }} "http://172.31.44.238:8080/job/prometheus-reload/build?token=prometheus"
