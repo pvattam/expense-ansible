@@ -37,15 +37,6 @@ groups:
           env: {{ env }}
         annotations:
           summary: Warning | CPU Usage Alert
-      - alert: Dummy
-        expr: up < 1
-        for: 1m
-        labels:
-          severity: critical
-          component: {{ component }}
-          env: {{ env }}
-        annotations:
-          summary: Critical | Dummy Alert
       - alert: NetworkBWMonitorWaitQueue
         expr: rate(node_ethtool_bw_in_allowance_exceeded[1m]) > 0
         for: 3m
