@@ -49,3 +49,8 @@
   ansible.builtin.dnf:
     name: nri-nginx
     state: installed
+
+- name: Copy New Relic Nginx Agent Config File
+  ansible.builtin.template:
+    src: nr-nginx.yml
+    dest: /etc/newrelic-infra/integrations.d/nginx-config.yml
