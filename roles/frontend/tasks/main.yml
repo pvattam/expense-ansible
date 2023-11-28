@@ -16,29 +16,31 @@
     app_dir: /usr/share/nginx/html/
     component: frontend
 
-- name: Start Nginx Service
-  ansible.builtin.systemd:
-    name: nginx
-    state: restarted
-    enabled: yes
+#- name: Start Nginx Service
+#  ansible.builtin.systemd:
+#    name: nginx
+#    state: restarted
+#    enabled: yes
+#
+#- name: Import ELK Role - Filebeat
+#  ansible.builtin.import_role:
+#    name: elk
+#    tasks_from: filebeat
+#
+#- name: Import Prometheus - Node Exporter
+#  ansible.builtin.import_role:
+#    name: prometheus
+#    tasks_from: node-exporter
+#
+#- name: Import Grafana - Dashboard Creation
+#  ansible.builtin.import_role:
+#    name: grafana
+#
+#- name: Import Prometheus Role - Alert Rules Update
+#  ansible.builtin.import_role:
+#    name: prometheus
+#    tasks_from: alert-rules-update
 
-- name: Import ELK Role - Filebeat
-  ansible.builtin.import_role:
-    name: elk
-    tasks_from: filebeat
 
-- name: Import Prometheus - Node Exporter
-  ansible.builtin.import_role:
-    name: prometheus
-    tasks_from: node-exporter
-
-- name: Import Grafana - Dashboard Creation
-  ansible.builtin.import_role:
-    name: grafana
-
-- name: Import Prometheus Role - Alert Rules Update
-  ansible.builtin.import_role:
-    name: prometheus
-    tasks_from: alert-rules-update
-
-
+- name: Install New Relic Agent
+  ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-2ZF82RCQBYUS8QG4JUI8OUTHY56 NEW_RELIC_ACCOUNT_ID=4257195 /usr/local/bin/newrelic install -n infrastructure-agent-installer --tag {{component}}-{{env}}
