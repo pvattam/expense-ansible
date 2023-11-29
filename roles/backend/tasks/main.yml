@@ -14,6 +14,11 @@
     src: backend.service
     dest: /etc/systemd/system/backend.service
 
+- name: Copy backend StartUP Script
+  ansible.builtin.template:
+    src: run.sh
+    dest: /bash/run.sh
+
 - name: Add application user
   ansible.builtin.user:
     name: expense
@@ -30,6 +35,11 @@
   ansible.builtin.shell: npm install
   args:
     chdir: /app        #It will go to /app directory and do npm install
+
+- name: Install New Relic NodeJS Library
+  ansible.builtin.shell: npm install newrelic --save
+  args:
+    chdir: /app
 
 - name: Install Mysql client
   ansible.builtin.dnf:
@@ -51,7 +61,3 @@
     name: elk
     tasks_from: filebeat
 
-- name: Install New Relic NodeJS Library
-  ansible.builtin.shell: npm install newrelic --save
-  args:
-    chdir: /app
