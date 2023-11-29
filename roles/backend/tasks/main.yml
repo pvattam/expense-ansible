@@ -17,7 +17,7 @@
 - name: Copy backend StartUP Script
   ansible.builtin.template:
     src: run.sh
-    dest: /bash/run.sh
+    dest: /app/run.sh
 
 - name: Add application user
   ansible.builtin.user:
