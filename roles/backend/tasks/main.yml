@@ -21,10 +21,11 @@
 - name: Import common role - App Pre-requisites
   ansible.builtin.import_role:
     name: common
-    tasks_from: app-prereq
+    tasks_from: app-prereq.yml
   vars:
     app_dir: /app
     component: backend
+    app_user: expense
 
 - name: Download NodeJs dependencies
   ansible.builtin.shell: npm install
