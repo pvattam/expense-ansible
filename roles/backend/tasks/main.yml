@@ -25,6 +25,7 @@
   vars:
     app_dir: /app
     component: backend
+    app_user: expense
 
 - name: Download NodeJs dependencies
   ansible.builtin.shell: npm install

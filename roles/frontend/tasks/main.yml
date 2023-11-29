@@ -13,33 +13,34 @@
     name: common
     tasks_from: app-prereq.yml
   vars:
-    app_dir: /usr/share/nginx/html/
+    app_dir: /usr/share/nginx/html
     component: frontend
+    app_user: root
 
 - name: Start Nginx Service
   ansible.builtin.systemd:
     name: nginx
     state: restarted
     enabled: yes
-#
-#- name: Import ELK Role - Filebeat
-#  ansible.builtin.import_role:
-#    name: elk
-#    tasks_from: filebeat
-#
-#- name: Import Prometheus - Node Exporter
-#  ansible.builtin.import_role:
-#    name: prometheus
-#    tasks_from: node-exporter
-#
-#- name: Import Grafana - Dashboard Creation
-#  ansible.builtin.import_role:
-#    name: grafana
-#
-#- name: Import Prometheus Role - Alert Rules Update
-#  ansible.builtin.import_role:
-#    name: prometheus
-#    tasks_from: alert-rules-update
+
+- name: Import ELK Role - Filebeat
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
+
+- name: Import Prometheus - Node Exporter
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: node-exporter
+
+- name: Import Grafana - Dashboard Creation
+  ansible.builtin.import_role:
+    name: grafana
+
+- name: Import Prometheus Role - Alert Rules Update
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: alert-rules-update
 
 
 - name: Install New Relic Agent

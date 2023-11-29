@@ -7,6 +7,9 @@
   ansible.builtin.file:
     path: "{{ app_dir }}"
     state: directory
+    owner: "{{app_user}}"
+    group: "{{app_user}}"
+
 
 - name: Download and Extract the backend Content
   ansible.builtin.unarchive:
