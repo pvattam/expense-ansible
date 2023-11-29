@@ -4,7 +4,7 @@
     dest: /tmp/{{ component }}-{{env}}.yml
 
 - name: Upload Alert File to S3
-  ansible.builtin.shell: aws s3 cp /tmp/frontend-dev.yml s3://pv24-prometheus-alert-rules/frontend-dev.yml
+  ansible.builtin.shell: aws s3 cp /tmp/{{component}}-{{env}}.yml s3://pv24-prometheus-alert-rules/{{component}}-{{env}}.yml
 #  amazon.aws.s3_object:
 #    bucket: pv24-prometheus-alert-rules
 #    object: "{{ component }}-{{env}}.yml"
