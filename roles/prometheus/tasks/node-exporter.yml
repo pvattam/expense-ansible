@@ -15,3 +15,12 @@
     state: restarted
     enabled: yes
     daemon-reload: yes
+
+- name: Import Grafana - Dashboard Creation
+  ansible.builtin.import_role:
+    name: grafana
+
+- name: Import Prometheus Role - Alert Rules Update
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: alert-rules-update
