@@ -21,7 +21,7 @@
 - name: Import common role - App Pre-requisites
   ansible.builtin.import_role:
     name: common
-    tasks_from: app-prereq
+    tasks_from: app-prereq.yml
   vars:
     app_dir: /app
     component: backend
