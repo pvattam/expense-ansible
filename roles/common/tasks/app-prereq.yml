@@ -11,9 +11,15 @@
     group: "{{app_user}}"
 
 
-- name: Download and Extract the backend Content
+#- name: Download and Extract the backend Content
+#  ansible.builtin.unarchive:
+#    src: https://expense-artifacts.s3.amazonaws.com/{{component}}.zip
+#    dest: "{{ app_dir }}"
+#    remote_src: yes
+#http://artifactory.devopspv24.online:8081/artifactory/expense-backend/
+
+- name: Download and extract app content
   ansible.builtin.unarchive:
-    src: https://expense-artifacts.s3.amazonaws.com/{{component}}.zip
+    src: http://{{ lookup('amazon.aws.aws_ssm', 'artifactory.username', region='us-east-1' ) }}:{{ lookup('amazon.aws.aws_ssm', 'artifactory.password', region='us-east-1' ) }}@artifactory.devopspv24.online:8081/artifactory/{{project_name}}-{{component}}/{{project_name}}-{{component}}-1.0.0.zip
     dest: "{{ app_dir }}"
     remote_src: yes
-#http://artifactory.devopspv24.online:8081/artifactory/expense-backend/
