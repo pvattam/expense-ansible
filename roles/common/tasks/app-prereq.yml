@@ -20,6 +20,22 @@
 
 - name: Download and extract app content
   ansible.builtin.unarchive:
-    src: http://{{ lookup('amazon.aws.aws_ssm', 'artifactory.username', region='us-east-1' ) }}:{{ lookup('amazon.aws.aws_ssm', 'artifactory.password', region='us-east-1' ) }}@artifactory.devopspv24.online:8081/artifactory/{{project_name}}-{{component}}/{{project_name}}-{{component}}-{{ lookup('amazon.aws.aws_ssm', '{{dev}}.backend.app_version', region='us-east-1' ) }}.zip
+    src: http://{{username}}:{{password}}@artifactory.devopspv24.online:8081/artifactory/{{project_name}}-{{component}}/{{project_name}}-{{component}}-{{version}}.zip
     dest: "{{ app_dir }}"
     remote_src: yes
+  vars:
+    username: "{{ lookup('amazon.aws.aws_ssm', 'artifactory.username', region='us-east-1' ) }}"
+    password: "{{ lookup('amazon.aws.aws_ssm', 'artifactory.password', region='us-east-1' ) }}"
+    version: "{{ lookup('amazon.aws.aws_ssm', '{{env}}.{{component}}.app_version', region='us-east-1' ) }}"
+
+
+
+
+
+
+
+
+
+
+
+
