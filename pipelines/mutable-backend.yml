@@ -1,0 +1,74 @@
+format_version: 10
+pipelines:
+  MutableDeployment_Backend:
+    group: defaultGroup
+    environment_variables:
+      APP_VERSION: ""
+    materials:
+      deploy:
+        git: https://github.com/pvattam/expense-ansible.git
+        shallow_clone: true
+        auto_update: false
+        branch: main
+    stages:
+      - dev:
+          fetch_materials: true
+          keep_artifacts: false
+          clean_workspace: false
+          jobs:
+            deploy:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: echo
+                    arguments:
+                      - "Deploying to Dev Env"
+                    run_if: passed
+
+      - qa:
+          fetch_materials: true
+          keep_artifacts: false
+          clean_workspace: false
+          approval:
+            type: manual
+          jobs:
+            deploy:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: echo
+                    arguments:
+                      - "Deploying to QA Env"
+                    run_if: passed
+
+      - uat:
+          fetch_materials: true
+          keep_artifacts: false
+          clean_workspace: false
+          approval:
+            type: manual
+          jobs:
+            deploy:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: echo
+                    arguments:
+                      - "Deploying to UAT Env"
+                    run_if: passed
+
+      - prod:
+          fetch_materials: true
+          keep_artifacts: false
+          clean_workspace: false
+          approval:
+            type: manual
+          jobs:
+            deploy:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: echo
+                    arguments:
+                      - "Deploying to PROD Env"
+                    run_if: passed
