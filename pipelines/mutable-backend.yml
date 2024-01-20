@@ -3,7 +3,6 @@ pipelines:
   MutableDeployment_Backend:
     group: defaultGroup
     environment_variables:
-      ENV: ""
       COMPONENT: backend
       APP_VERSION: ""
     materials:
@@ -17,6 +16,10 @@ pipelines:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
+          environment_variables:
+            ENV: dev
+          approval:
+            type: manual
           jobs:
             deploy:
               timeout: 0
