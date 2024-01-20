@@ -27,6 +27,8 @@ pipelines:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
+          approval:
+            type: manual
           jobs:
             deploy:
               timeout: 0
@@ -41,6 +43,8 @@ pipelines:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
+          approval:
+            type: manual
           jobs:
             deploy:
               timeout: 0
@@ -55,6 +59,8 @@ pipelines:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
+          approval:
+            type: manual
           jobs:
             deploy:
               timeout: 0
