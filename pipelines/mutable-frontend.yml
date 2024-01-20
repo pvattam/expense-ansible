@@ -8,13 +8,15 @@ pipelines:
       deploy:
         git: https://github.com/pvattam/expense-ansible.git
         shallow_clone: true
-        auto_update: false
+        auto_update: true
         branch: main
     stages:
       - dev:
           fetch_materials: false
           keep_artifacts: false
           clean_workspace: false
+          approval:
+            type: manual
           jobs:
             deploy:
               timeout: 0

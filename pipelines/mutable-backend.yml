@@ -3,6 +3,8 @@ pipelines:
   MutableDeployment_Backend:
     group: defaultGroup
     environment_variables:
+      ENV: ""
+      COMPONENT: backend
       APP_VERSION: ""
     materials:
       deploy:
@@ -12,7 +14,7 @@ pipelines:
         branch: main
     stages:
       - dev:
-          fetch_materials: false
+          fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
           jobs:
@@ -20,9 +22,9 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: echo
+                    command: bash
                     arguments:
-                      - "Deploying to Dev Env"
+                      - mutable.sh
                     run_if: passed
 
       - qa:
