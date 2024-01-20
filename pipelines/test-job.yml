@@ -2,10 +2,13 @@ format_version: 10
 pipelines:
   test-job:
     group: defaultGroup
+    environment_variables:
+      DEPLOYMENT: testing
+      FOO: bar
     materials:
       deploy:
         git: https://github.com/pvattam/expense-ansible.git
-        shallow_clone: false
+        shallow_clone: true
         auto_update: true
         branch: main
     stages:
