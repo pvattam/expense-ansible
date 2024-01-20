@@ -18,7 +18,9 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: echo Deploying to Dev Env
+                    command: echo
+                    arguments:
+                      - "Deploying to Dev Env"
                     run_if: passed
 
       - qa:
@@ -30,7 +32,9 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: echo Deploying to QA Env
+                    command: echo
+                    arguments:
+                      - "Deploying to QA Env"
                     run_if: passed
 
       - uat:
@@ -42,7 +46,9 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: echo Deploying to UAT Env
+                    command: echo
+                    arguments:
+                      - "Deploying to UAT Env"
                     run_if: passed
 
       - prod:
@@ -54,5 +60,7 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: echo Deploying to PROD Env
+                    command: echo
+                    arguments:
+                      - "Deploying to PROD Env"
                     run_if: passed
