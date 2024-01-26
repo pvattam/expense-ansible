@@ -8,6 +8,20 @@
     src: common.yml
     dest: /opt/prometheus/alert-rules/common.yml
 
+- name: List All files in Bucket
+  amazon.aws.s3_object:
+    bucket: pv24-prometheus-alert-rules
+    mode: list
+  register: out
+
+- name: Download All the Objects from S3 Bucket Having Alert Files
+  amazon.aws.s3_object:
+    bucket: pv24-prometheus-alert-rules
+    mode: get
+    object: "{{item}}"
+    dest: /opt/prometheus/alert-rules/{{item}}
+  loop: "{{out.s3_keys}}"
+
 #- name: Restart Prometheus
 #  ansible.builtin.systemd:
 #    name: prometheus
@@ -35,19 +49,7 @@
 #    object: "{{item}}"
 #    dest: /opt/prometheus/alert-rules/{{item}}
 #  loop: "{{out.s3_keys}}"
-- name: List All files in Bucket
-  amazon.aws.s3_object:
-    bucket: pv24-prometheus-alert-rules
-    mode: list
-  register: out
 
-- name: Download All the Objects from S3 Bucket Having Alert Files
-  amazon.aws.s3_object:
-    bucket: pv24-prometheus-alert-rules
-    mode: get
-    object: "{{item}}"
-    dest: /opt/prometheus/alert-rules/{{item}}
-  loop: "{{out.s3_keys}}"
 
 
 - name: Reload AlertManager
