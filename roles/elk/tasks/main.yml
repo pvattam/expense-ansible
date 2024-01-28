@@ -1,0 +1,3 @@
+- nmae: Filebeat Setup
+  ansible.builtin.include_tasks:
+    file: logstash.yml
