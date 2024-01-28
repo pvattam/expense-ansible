@@ -1,0 +1,16 @@
+- name: Import Component
+  ansible.builtin.import_role:
+    name: "{{ component }}"
+    tasks_from: deploy
+
+- name: Import Common Role - App Pre-requuisites
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-prereq
+
+- name: Restart Service
+  ansible.builtin.systemd:
+    name: "{{ service_name }}"
+    state: restarted
+    enabled: yes
+    daemon-reload: yes

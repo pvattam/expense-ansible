@@ -1,3 +1,6 @@
 component: frontend
 log_file: var.log/nginx/access.log
 is_rsyslog_needed: no
+app_dir: /usr/share/nginx/html
+app_user: root
+service_name: nginx
