@@ -51,6 +51,7 @@ filebeat.inputs:
     # to add additional information to the crawled log files for filtering
     fields:
       component: {{ component }}
+      env: {{ env }}
 
 
 # ============================== Filebeat modules ==============================
@@ -150,7 +151,7 @@ setup.kibana:
 # ------------------------------ Logstash Output -------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["172.31.95.170"]
+  hosts: ["172.31.95.170:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
