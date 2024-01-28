@@ -1,7 +1,7 @@
 - name: Copy Filebeat Configuration
   ansible.builtin.template:
     src: logstash.conf
-  dest: /etc/logstash/conf.d/logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
 
 - name: Restart Logstash
   ansible.builtin.systemd_service:
