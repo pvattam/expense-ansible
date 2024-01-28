@@ -1,0 +1,9 @@
+- name: Import Common Role - App Pre-requisites
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-prereq
+
+- name: Copy backend StartUP Script
+  ansible.builtin.template:
+    src: run.sh
+    dest: /app/run.sh
