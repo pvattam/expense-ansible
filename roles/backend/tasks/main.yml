@@ -30,10 +30,10 @@
     component: backend
     app_user: expense
 
-- name: Download NodeJs dependencies
-  ansible.builtin.shell: npm install
-  args:
-    chdir: /app        #It will go to /app directory and do npm install
+#- name: Download NodeJs dependencies
+#  ansible.builtin.shell: npm install
+#  args:
+#    chdir: /app        #It will go to /app directory and do npm install
 
 - name: Install New Relic NodeJS Library
   ansible.builtin.shell: npm install newrelic --save
@@ -53,17 +53,17 @@
 - name: Load schema
   ansible.builtin.shell: mysql -h {{ lookup('amazon.aws.aws_ssm', '{{env}}.rds.endpoint', region='us-east-1' ) }} -u{{ lookup('amazon.aws.aws_ssm', '{{env}}.rds.username', region='us-east-1' ) }} -p{{ lookup('amazon.aws.aws_ssm', '{{env}}.rds.password', region='us-east-1' ) }} < /app/schema/backend.sql
 
-- name: Import ELK Role - Filebeat
-  ansible.builtin.import_role:
-    name: elk
-    tasks_from: filebeat
-
 - name: start backend service
   ansible.builtin.systemd:
     name: backend
     state: restarted
     enabled: yes
     daemon-reload: yes
+
+- name: Import ELK Role - Filebeat
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
 
 - name: Import Prometheus - Node Exporter
   ansible.builtin.import_role:
