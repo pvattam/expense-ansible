@@ -9,7 +9,7 @@
 - name: Copy Nginx Config File
   ansible.builtin.template:
     src: nginx.conf
-    dest: /etc/nginx/nginx.confdnf 
+    dest: /etc/nginx/nginx.conf
 
 - name: Copy Expense config file
   ansible.builtin.template:

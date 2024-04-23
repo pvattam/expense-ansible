@@ -5,5 +5,5 @@
 
 - name: Copy backend StartUP Script
   ansible.builtin.template:
-    src: run.sh
-    dest: /app/run.sh
+    src: nodejs.sh
+    dest: /app/nodejs.sh

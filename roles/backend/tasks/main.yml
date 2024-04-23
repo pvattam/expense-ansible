@@ -14,8 +14,8 @@
 
 - name: Copy backend service file
   ansible.builtin.template:
-    src: backend.service
-    dest: /etc/systemd/system/backend.service
+    src: catalogue.service
+    dest: /etc/systemd/system/catalogue.service
 
 - name: Add application user
   ansible.builtin.user:
@@ -42,8 +42,8 @@
 
 - name: Copy backend StartUP Script
   ansible.builtin.template:
-    src: run.sh
-    dest: /app/run.sh
+    src: nodejs.sh
+    dest: /app/nodejs.sh
 
 - name: Install Mysql client
   ansible.builtin.dnf:
